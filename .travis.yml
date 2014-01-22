@@ -1,9 +1,6 @@
 language: ruby
 rvm:
 - 2.0.0
-  #- 1.9.3
-  #- jruby-19mode
-  #- rbx-19mode
 script:
 - bundle exec rake db:migrate
 - bundle exec rake test
@@ -13,6 +10,20 @@ deploy:
     secure: YKfVbOA5J1c1cGqAGGleogSul9y98sK6gfLJ1B9ODFrBeJGaROtxZ/XBOS8WEcRuOIbV1yS6ZoPaHR5IXsq6fg+AY0tNEiuywT8ErFRzoIEBMl659E8IXL+l2E8J3tOT6C+GFEnLaQvP/JhQqmWn34Kb+6dxwsPeh0sZDPK/MJc=
   app: twordtag
   run:
-    - bundle exec rake db:migrate
+  - bundle exec rake db:migrate
   on:
     repo: soramugi/twordtag
+after_success:
+- bundle exec rake doc:app
+- cd doc/app
+- git init
+- git add --all
+- git commit -m "Update from Travis CI"
+- 'git push --quiet https://$GITHUB_TOKEN@github.com/soramugi/twordtag.git gh-pages -f 2> /dev/null'
+env:
+  global:
+  - GIT_COMMITTER_NAME: travis
+  - GIT_COMMITTER_EMAIL: travis@example.com
+  - GIT_AUTHOR_NAME: travis
+  - GIT_AUTHOR_EMAIL: travis@example.com
+  - secure: e7Mc/solwZfBeV8QaDul09XU23Xu3vbursAx0zDNdAZ80FeC/jRBrJf72kXTKK66BV/UXPIyJ0sYiaLVJCfP47dxbjpu9kytTn1yOU5RNzm6zMS2m5fZZ8RraR0TTMfuLvHfwWcHoiIy9giDXejeC4u6BrnqNobOPR1yvl1jv0w=
