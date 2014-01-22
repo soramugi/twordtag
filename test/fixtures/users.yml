@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  screen_name: MyString
+  token: MyString
+  secret: MyString
+
+two:
+  screen_name: MyString
+  token: MyString
+  secret: MyString
