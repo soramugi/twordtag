@@ -1,32 +1,35 @@
-== README
+= TWordTag
 
 {<img src="https://travis-ci.org/soramugi/twordtag.png?branch=master" alt="Build Status" />}[https://travis-ci.org/soramugi/twordtag] {<img src="https://coveralls.io/repos/soramugi/twordtag/badge.png?branch=master" alt="Coverage Status" />}[https://coveralls.io/r/soramugi/twordtag?branch=master] {<img src="https://codeclimate.com/github/soramugi/twordtag.png" />}[https://codeclimate.com/github/soramugi/twordtag] {<img src="https://gemnasium.com/soramugi/twordtag.png" alt="Dependency Status" />}[https://gemnasium.com/soramugi/twordtag]
 
-generate document http://soramugi.github.io/twordtag
+== 概要
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+TWordTagはTwitterでのつぶやきから単語を抜き出して、ユーザー同士を紐づけるwebアプリケーションです。
 
-Things you may want to cover:
+開発中。。。。。
 
-* Ruby version
+http://twordtag.herokuapp.com
 
-* System dependencies
+== セットアップ
 
-* Configuration
+    git clone git@github.com:soramugi/twordtag.git
+    cd twordtag
+    bundle install --path vendor/bundle
+    ./bin/rake db:migrate
+    ./bin/rails s
 
-* Database creation
+Twitterのユーザー認証にはトークンの指定が必要です。
 
-* Database initialization
+    TWITTER_CONSUMER_KEY=YOUR_TWITTER_CONSUMER_KEY TWITTER_CONSUMER_SECRET=YOUR_TWITTER_CONSUMER_SECRET ./bin/rails s
 
-* How to run the test suite
+== テストの実行
 
-* Services (job queues, cache servers, search engines, etc.)
+    ./bin/rake test
 
-* Deployment instructions
+== ドキュメントの作成
 
-* ...
+    ./bin/rake doc:app
 
+ドキュメントはtravis-ciで作成、GitHub Pagesで公開までしているので最新のドキュメントはwebブラウザから閲覧する事が出来ます。
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+ドキュメントページ http://soramugi.github.io/twordtag
