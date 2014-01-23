@@ -14,3 +14,7 @@ gem 'jbuilder', '~> 1.2'
 group :doc do
   gem 'sdoc', require: false
 end
+
+gem "mocha", :require => false
+gem 'omniauth'
+gem 'omniauth-twitter'
