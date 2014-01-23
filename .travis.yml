@@ -10,7 +10,7 @@ deploy:
     secure: YKfVbOA5J1c1cGqAGGleogSul9y98sK6gfLJ1B9ODFrBeJGaROtxZ/XBOS8WEcRuOIbV1yS6ZoPaHR5IXsq6fg+AY0tNEiuywT8ErFRzoIEBMl659E8IXL+l2E8J3tOT6C+GFEnLaQvP/JhQqmWn34Kb+6dxwsPeh0sZDPK/MJc=
   app: twordtag
   run:
-  - bundle exec rake db:migrate
+  - rake db:migrate
   on:
     repo: soramugi/twordtag
 after_success:
