@@ -17,6 +17,5 @@
 /tmp
 
 /doc
-/db/mecab*[!{tar.gz}]
 /config/okura-dic
 
