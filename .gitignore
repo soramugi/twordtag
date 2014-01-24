@@ -15,4 +15,8 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
 /doc
+/db/mecab*[!{tar.gz}]
+/config/okura-dic
+

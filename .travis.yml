@@ -3,6 +3,7 @@ rvm:
 - 2.0.0
 script:
 - bundle exec rake db:migrate
+- bundle exec rake okura:compile
 - bundle exec rake test
 deploy:
   provider: heroku
@@ -11,6 +12,7 @@ deploy:
   app: twordtag
   run:
   - rake db:migrate
+  - rake okura:compile
   on:
     repo: soramugi/twordtag
 after_success:
