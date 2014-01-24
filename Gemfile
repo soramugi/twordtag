@@ -18,3 +18,4 @@ end
 gem "mocha", :require => false
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'okura', require: ['okura/serializer']

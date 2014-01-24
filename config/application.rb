@@ -22,5 +22,6 @@ module Twordtag
     # config.i18n.default_locale = :de
     config.twitter_consumer_key    = ENV['TWITTER_CONSUMER_KEY']    || 'YOUR_TWITTER_CONSUMER_KEY'
     config.twitter_consumer_secret = ENV['TWITTER_CONSUMER_SECRET'] || 'YOUR_TWITTER_CONSUMER_SECRET'
+    config.okura_dict_dir = Dir[Rails.root.join('config', 'okura-dic').to_s]
   end
 end

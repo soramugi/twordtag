@@ -1,5 +1,11 @@
 class SessionsController < ApplicationController
   def index
+    dict_dir=Twordtag::Application.config.okura_dict_dir
+    tagger=Okura::Serializer::FormatInfo.create_tagger dict_dir
+
+    str='解析対象の文字列'
+
+    @nodes=tagger.parse(str)
   end
 
   def create
