@@ -22,6 +22,21 @@ Twitterのユーザー認証にはトークンの指定が必要です。
 
     TWITTER_CONSUMER_KEY=YOUR_TWITTER_CONSUMER_KEY TWITTER_CONSUMER_SECRET=YOUR_TWITTER_CONSUMER_SECRET ./bin/rails s
 
+== herokuセットアップ
+
+herokuで稼働する事を前提としています。
+
+herokuアカウントがあれば、heroku上でアプリケーションを稼働させる事が出来ます。
+
+    git clone git@github.com:soramugi/twordtag.git
+    cd twordtag
+    heroku create
+    heroku config:set TWITTER_CONSUMER_KEY=YOUR_TWITTER_CONSUMER_KEY
+    heroku config:set TWITTER_CONSUMER_SECRET=YOUR_TWITTER_CONSUMER_SECRET
+    heroku config:set SECRET_KEY_BASE=YOUR_SECRET_KEY_BASE__RUN_rake_secret
+    git push heroku
+    heroku open
+
 == テストの実行
 
     ./bin/rake test
