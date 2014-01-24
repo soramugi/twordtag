@@ -1,9 +1,24 @@
 language: ruby
 rvm:
 - 2.0.0
+env:
+  global:
+  - GIT_COMMITTER_NAME: travis
+  - GIT_COMMITTER_EMAIL: travis@example.com
+  - GIT_AUTHOR_NAME: travis
+  - GIT_AUTHOR_EMAIL: travis@example.com
+  - secure: e7Mc/solwZfBeV8QaDul09XU23Xu3vbursAx0zDNdAZ80FeC/jRBrJf72kXTKK66BV/UXPIyJ0sYiaLVJCfP47dxbjpu9kytTn1yOU5RNzm6zMS2m5fZZ8RraR0TTMfuLvHfwWcHoiIy9giDXejeC4u6BrnqNobOPR1yvl1jv0w=
 script:
 - bundle exec rake db:migrate
 - bundle exec rake test
+after_success:
+- bundle exec rake doc:app
+- cd doc/app
+- git init
+- git add --all
+- git commit -m "Update from Travis CI"
+- 'git push --quiet https://$GITHUB_TOKEN@github.com/soramugi/twordtag.git HEAD:gh-pages -f 2> /dev/null'
+- cd ../../
 deploy:
   provider: heroku
   api_key:
@@ -13,17 +28,3 @@ deploy:
   - rake db:migrate
   on:
     repo: soramugi/twordtag
-after_success:
-- bundle exec rake doc:app
-- cd doc/app
-- git init
-- git add --all
-- git commit -m "Update from Travis CI"
-- 'git push --quiet https://$GITHUB_TOKEN@github.com/soramugi/twordtag.git HEAD:gh-pages -f 2> /dev/null'
-env:
-  global:
-  - GIT_COMMITTER_NAME: travis
-  - GIT_COMMITTER_EMAIL: travis@example.com
-  - GIT_AUTHOR_NAME: travis
-  - GIT_AUTHOR_EMAIL: travis@example.com
-  - secure: e7Mc/solwZfBeV8QaDul09XU23Xu3vbursAx0zDNdAZ80FeC/jRBrJf72kXTKK66BV/UXPIyJ0sYiaLVJCfP47dxbjpu9kytTn1yOU5RNzm6zMS2m5fZZ8RraR0TTMfuLvHfwWcHoiIy9giDXejeC4u6BrnqNobOPR1yvl1jv0w=
