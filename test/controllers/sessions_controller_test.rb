@@ -1,11 +1,6 @@
 require 'test_helper'
 
 class SessionsControllerTest < ActionController::TestCase
-  test "should get index" do
-    get :index
-    assert_response :success
-  end
-
   test "should get create" do
     OmniAuth.config.test_mode = true
     OmniAuth.config.add_mock(

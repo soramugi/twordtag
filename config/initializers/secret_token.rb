@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Twordtag::Application.config.secret_key_base = 'd2ab7ec37a211ba9a66c747acc3a7e3f60f7a5404228e4ac140ee4bdc93988fdf82a5e97dc749173764edd44f4078b5c19d54f72f8b8b8c522c5c60ee3d917a6'
+Twordtag::Application.config.secret_key_base = ENV['SECRET_KEY_BASE'] || 'd2ab7ec37a211ba9a66c747acc3a7e3f60f7a5404228e4ac140ee4bdc93988fdf82a5e97dc749173764edd44f4078b5c19d54f72f8b8b8c522c5c60ee3d917a6'
