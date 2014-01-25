@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Twordtag</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Twordtag</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-<%= yield %>
+    <div id="wrap">
 
-</body>
+      <div class="container">
+        <div class="page-header" id="banner">
+          <h1>TWordTag</h1>
+        </div>
+        <div class="main">
+          <%= yield %>
+        </div>
+      </div>
+
+      <div id="push"></div>
+
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <ul class="credit">
+          <li class="pull-right"><%= link_to 'Back to top', '#' %></li>
+          <li>Copyright © 2014 by <%=link_to '@soramugi', 'http://twitter.com/soramugi' %>.</li>
+          <li>All Rights Reserved.</li>
+          <li>Powered by <%= link_to('Ruby on Rails', 'http://rubyonrails.org') %>, <%= link_to('Bootswatch: Spacelab', 'http://bootswatch.com/spacelab/') %>.</li>
+        </ul>
+      </div>
+    </div>
+
+  </body>
 </html>

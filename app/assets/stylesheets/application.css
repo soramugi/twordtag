@@ -11,3 +11,25 @@
  *= require_self
  *= require_tree .
  */
+
+html,
+body {
+  height: 100%;
+}
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -110px;
+}
+
+#push,
+#footer {
+  height: 110px;
+}
+
+.container .credit {
+  list-style: none;
+  margin: 20px 0;
+  margin-left: -40px;
+}
