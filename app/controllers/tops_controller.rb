@@ -6,14 +6,15 @@ class TopsController < ApplicationController
 
   #
   # GET|POST '/analysis'
+  # GET|POST '/analysis.json'
   #
   def analysis
-    dict_dir=Twordtag::Application.config.okura_dict_dir
+    dict_dir = Twordtag::Application.config.okura_dict_dir
     $stdout = StringIO.new
-    tagger=Okura::Serializer::FormatInfo.create_tagger dict_dir
+    tagger = Okura::Serializer::FormatInfo.create_tagger dict_dir
     $stdout = STDOUT
 
-    str='解析対象の文字列'
-    @nodes=tagger.parse(str)
+    @str = params[:text] ||= '解析対象の文字列'
+    @nodes = tagger.parse(@str)
   end
 end

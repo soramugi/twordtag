@@ -1,3 +1,14 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$document = $(document)
+
+$document.on 'click', '#analysis-btn', (e) ->
+  $("#preview").html('Now Loading...')
+  $.post '/analysis.json',
+    text:   $("#textArea").val()
+    (data) ->
+      html = '<ul class="unstyled">'
+      for value in data
+        html += '<li>' + value.surface + ' , ' + value.text + '</li>'
+      html += '</ul>'
+      $("#preview").html(html)
+  return false
+
