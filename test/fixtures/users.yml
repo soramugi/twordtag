@@ -5,13 +5,13 @@ one:
   uid: MyString
   name: MyString
   image_url: MyString
-  email: MyString
-  access_token: MyString
+  token: MyString
+  secret: MyString
 
 two:
   provider: MyString
   uid: MyString
   name: MyString
   image_url: MyString
-  email: MyString
-  access_token: MyString
+  token: MyString
+  secret: MyString

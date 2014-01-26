@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
       if user.provider == "twitter"
         user.name      = auth["info"]["nickname"]
         user.image_url = auth["info"]["image"]
+        user.token     = auth["credentials"]["token"]
+        user.secret    = auth["credentials"]["secret"]
       else
         user.name      = auth["info"]["name"]
       end
