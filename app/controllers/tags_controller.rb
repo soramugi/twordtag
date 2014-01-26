@@ -13,9 +13,10 @@ class TagsController < ApplicationController
 
   private
   def set_tags
-    if word = params[:word]
-      @tags = Tag.where(word: word).order('id desc')
+    if @word = params[:word]
+      @tags = Tag.where(word: @word).order('id desc')
     else
+      @word = '@all'
       @tags = Tag.all.order('id desc')
     end
   end
