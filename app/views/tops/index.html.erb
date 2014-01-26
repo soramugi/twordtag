@@ -1,15 +1,4 @@
 <p>Find me in app/views/tops/index.html.erb</p>
 
-<ul>
-  <% if login?  %>
-    <% if notice %>
-      <li><%= notice %></li>
-    <% end %>
-    <li>ようこそ <%= myname %>さん</li>
-    <li><%= link_to "ログアウト", "/signout" %></li>
-  <% else %>
-    <li><%= link_to "Twitterでログイン", "/auth/twitter" %></li>
-  <% end %>
-</ul>
 
 <%= link_to '形態素解析', analysis_path %>

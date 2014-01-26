@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :login?, :myid, :myname
+  helper_method :current_user, :login?, :myid, :myname, :myimage
 
   private
     def current_user
@@ -18,12 +18,17 @@ class ApplicationController < ActionController::Base
     def myname
       session[:name]
     end
+    def myimage
+      session[:image_url]
+    end
     def login user
-      session[:user_id] = user.id
-      session[:name]    = user.name
+      session[:user_id]   = user.id
+      session[:name]      = user.name
+      session[:image_url] = user.image_url
     end
     def logout
-      session[:user_id] = nil
-      session[:name]    = nil
+      session[:user_id]   = nil
+      session[:name]      = nil
+      session[:image_url] = nil
     end
 end
