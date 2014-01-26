@@ -20,6 +20,7 @@ module Twordtag
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    config.title = 'TWordTag'
     config.twitter_consumer_key    = ENV['TWITTER_CONSUMER_KEY']    || 'YOUR_TWITTER_CONSUMER_KEY'
     config.twitter_consumer_secret = ENV['TWITTER_CONSUMER_SECRET'] || 'YOUR_TWITTER_CONSUMER_SECRET'
     config.okura_dict_dir = Dir[Rails.root.join('config', 'okura-dic').to_s]
