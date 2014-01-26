@@ -6,11 +6,11 @@ class SessionsController < ApplicationController
       User.create_with_omniauth(auth)
 
     login(user)
-    redirect_to root_url, :notice => "Signed In!"
+    redirect_to root_url
   end
 
   def destroy
     logout
-    redirect_to root_url, :notice => "Signed Out!"
+    redirect_to root_url
   end
 end

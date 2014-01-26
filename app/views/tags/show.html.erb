@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<% @tags.each do |tag| %>
+  <p>
+    <strong>User:</strong>
+    <%= tag.user_id %>
+  </p>
+
+  <p>
+    <strong>Word:</strong>
+    <%= tag.word %>
+  </p>
+
+  <p>
+    <strong>Count:</strong>
+    <%= tag.count %>
+  </p>
+
+  <p>
+    <strong>Date:</strong>
+    <%= tag.date %>
+  </p>
+<% end %>

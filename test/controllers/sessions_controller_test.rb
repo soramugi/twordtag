@@ -8,7 +8,8 @@ class SessionsControllerTest < ActionController::TestCase
       {
         'provider' => 'twitter',
         'uid' => '12345',
-        'info' => { 'nickname' => 'yournickname' }
+        'info' => { 'nickname' => 'yournickname', 'image' => 'http://example' },
+        'credentials' => { 'token' => 'token_test', 'secret' => 'secret_test'}
       }
     )
     request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:twitter]

@@ -7,4 +7,7 @@ Twordtag::Application.routes.draw do
   get '/signout' => 'sessions#destroy'
 
   match '/analysis' => 'tops#analysis', via: [:get, :post]
+
+  get '/tags' => 'tags#index'
+  get '/tags/:word' => 'tags#show', as: 'tag'
 end

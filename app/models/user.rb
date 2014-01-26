@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :tags
   validates :provider, presence: :true
   validates :uid, presence: :true
   validates :name, presence: :true
