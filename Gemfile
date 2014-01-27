@@ -17,7 +17,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem "mocha", :require => false
+group :test do
+  gem 'hashie'
+  gem 'mocha', :require => false
+end
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'okura', require: ['okura/serializer']
