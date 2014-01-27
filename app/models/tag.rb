@@ -1,16 +1,18 @@
 class Tag < ActiveRecord::Base
   belongs_to :user
 
-  def self.create_with_user_tweet user_id,tweets,date
-    nouns = self.nouns(self.tweet_compression tweets)
+  def self.create_with_user_tweet user,date = nil
+    nouns = self.nouns(self.tweet_compression(user.tweets date))
     tags = []
     counter_nouns = nouns.inject(Hash.new(0)){|hash, a| hash[a] += 1; hash}
-    counter_nouns.each do |k,v|
+    counter_nouns = counter_nouns.sort {|(a,av),(b,bv)| bv <=> av}
+    counter_nouns.shift(20).each do |word,count|
+      next if count == 1
       tags << create! do |record|
-        record.user_id = user_id
-        record.word    = k
-        record.count   = v
-        record.date    = date
+        record.user_id = user.id
+        record.word    = word
+        record.count   = count
+        record.date    = date || user.yesterday
       end
     end
     tags

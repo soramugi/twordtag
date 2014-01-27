@@ -54,12 +54,12 @@ class User < ActiveRecord::Base
     day_tweets
   end
 
-  private
   # Railsで指定したtime_zoneを使いたいのでTimeでDateTimeを求める
   def yesterday
-    now = Time.now
-    Time.parse(now.strftime("%Y-%m-%d")).to_datetime - 1
+    Time.parse(Time.now.strftime("%Y-%m-%d")).to_datetime - 1
   end
+
+  private
   def user_timeline tweet_id
     client.user_timeline(uid.to_i, tweet_options(tweet_id))
   end
