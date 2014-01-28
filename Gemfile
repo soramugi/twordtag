@@ -20,6 +20,7 @@ end
 group :test do
   gem 'hashie'
   gem 'mocha', :require => false
+  gem 'coveralls', :require => false
 end
 gem 'omniauth'
 gem 'omniauth-twitter'
