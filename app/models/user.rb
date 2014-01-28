@@ -32,9 +32,9 @@ class User < ActiveRecord::Base
   end
 
   # TODO test
-  def tweets datetime = nil
-    start_time = datetime || yesterday
-    end_time   = start_time + 1
+  def tweets date = nil
+    start_date = date || yesterday
+    end_date   = start_date + 1
     is_retry   = true
     tweet_id   = nil
     day_tweets = []
@@ -42,21 +42,21 @@ class User < ActiveRecord::Base
       user_timeline(tweet_id).each do |tweet|
         tweet_id = tweet.id
         next if tweet.retweet?
-        next unless tweet.created_at < end_time
-        if start_time > tweet.created_at
+        next unless tweet.created_at < end_date
+        if start_date > tweet.created_at
           is_retry = false
           break
         end
-        next unless start_time <= tweet.created_at
+        next unless start_date <= tweet.created_at
         day_tweets << tweet
       end
     end
     day_tweets
   end
 
-  # Railsで指定したtime_zoneを使いたいのでTimeでDateTimeを求める
+  # Railsで指定したtime_zoneを使いたいのでTimeでDateを求める
   def yesterday
-    Time.parse(Time.now.strftime("%Y-%m-%d")).to_datetime - 1
+    Time.now.to_date - 1
   end
 
   private

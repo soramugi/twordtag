@@ -1,10 +1,12 @@
 namespace :tags do
   desc "tags create"
   task :create => :environment do
-    datetime = Time.parse(Time.now.strftime("%Y-%m-%d")).to_datetime - 1
+    date = Time.now.to_date - 1
     User.all.each do |user|
       next unless user.provider == 'twitter'
-      Tag.create_with_user_tweet user, datetime
+      next if TagLog.find_by_user_id_and_date(user.id, date)
+      Tag.create_with_user_tweet user, date
+      TagLog.create(user_id: user.id, date: date)
     end
   end
 end
