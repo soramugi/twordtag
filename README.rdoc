@@ -48,3 +48,25 @@ herokuアカウントがあれば、heroku上でアプリケーションを稼�
 ドキュメントはtravis-ciで作成、GitHub Pagesで公開までしているので最新のドキュメントはwebブラウザから閲覧する事が出来ます。
 
 ドキュメントページ http://soramugi.github.io/twordtag
+
+== 辞書の追加
+
+`dic/add_okura_dic.csv`
+
+のcsvファイルを編集。文字コードがEUC-JPなので注意
+編集後に辞書のコンパイルが必要
+
+== 辞書のコンパイル
+
+http://sourceforge.jp/projects/naist-jdic/releases/
+ページの
+mecab-naist-jdic
+をダウンロード
+
+    cd ~/Downloads
+    tar zxvf mecab-naist-jdic-0.6.3b-20111013.tar.gz
+    cd mecab-naist-jdic-0.6.3b-20111013/
+    cp ~/twordtag/dict/add_okura_dic.csv .
+    cd ~/twordtag
+    bundle exec okura compile ~/Downloads/mecab-naist-jdic-0.6.3b-20111013/ dict/okura-dic/
+

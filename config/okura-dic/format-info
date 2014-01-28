@@ -1,6 +1,0 @@
----
-:word_dic: :DoubleArray
-:unk_dic: :Marshal
-:features: :Marshal
-:char_types: :Marshal
-:matrix: :Marshal
