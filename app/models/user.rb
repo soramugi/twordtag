@@ -22,6 +22,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def create_tags date = nil
+      date = date || yesterday
+      return unless provider == 'twitter'
+      return if TagLog.find_by_user_id_and_date(id, date)
+      Tag.create_with_user_tweet self, date
+      TagLog.create(user_id: id, date: date)
+  end
+
   def client
     @client ||= Twitter::REST::Client.new do |config|
       config.consumer_key        = Twordtag::Application.config.twitter_consumer_key
