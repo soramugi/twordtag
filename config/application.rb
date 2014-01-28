@@ -14,6 +14,7 @@ module Twordtag
     # -- all .rb files in that directory are automatically loaded.
 
     config.time_zone = 'Tokyo'
+    config.active_record.default_timezone = :local
 
     config.title = 'TWordTag'
     config.twitter_consumer_key    = ENV['TWITTER_CONSUMER_KEY']    || 'YOUR_TWITTER_CONSUMER_KEY'
