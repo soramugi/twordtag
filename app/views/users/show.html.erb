@@ -1,0 +1,12 @@
+<%= image_tag @user.image_url %>
+<%= @user.name %>
+
+<div class="well col-xs-12">
+  <% #TODO 日付毎のくくりで表示 %>
+  <% @user.tags.each do |tag| %>
+    <div class="col-xs-2">
+      <%= tag.count %>
+      <%= tag.word %>
+    </div>
+  <% end %>
+</div>

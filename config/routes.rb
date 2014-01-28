@@ -10,4 +10,7 @@ Twordtag::Application.routes.draw do
 
   get '/tags' => 'tags#index'
   get '/tags/:word' => 'tags#show', as: 'tag'
+
+  get 'user/:name' => 'users#show', as: 'user'
+  get 'user/:name/:year/:month/:day' => 'users#show_date'
 end

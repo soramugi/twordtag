@@ -5,15 +5,15 @@
   <% if login?  %>
     <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-        <%= image_tag myimage, { width: '30'} %> <%= myname %> <span class="caret"></span>
+        <%= image_tag myimage, { width: 30, heidth: 30} %> <%= myname %> <span class="caret"></span>
       </a>
       <ul class="dropdown-menu">
-        <li><a href="#">Action</a></li>
+        <li><%= link_to 'マイページ', user_path(myname) %></li>
         <li class="divider"></li>
-        <li><%= link_to "ログアウト", "/signout" %></li>
+        <li><%= link_to 'ログアウト', '/signout' %></li>
       </ul>
     </li>
   <% else %>
-    <li><%= link_to 'Sign in with Twitter', "/auth/twitter" %></li>
+    <li><%= link_to 'Sign in with Twitter', '/auth/twitter' %></li>
   <% end %>
 </ul>
