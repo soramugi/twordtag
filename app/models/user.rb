@@ -16,8 +16,6 @@ class User < ActiveRecord::Base
         user.image_url = auth["info"]["image"]
         user.token     = auth["credentials"]["token"]
         user.secret    = auth["credentials"]["secret"]
-      else
-        user.name      = auth["info"]["name"]
       end
     end
   end
@@ -39,15 +37,18 @@ class User < ActiveRecord::Base
     end
   end
 
-  # TODO test
   def tweets date = nil
     start_date = date || yesterday
     end_date   = start_date + 1
     is_retry   = true
     tweet_id   = nil
     day_tweets = []
-    while is_retry do
-      user_timeline(tweet_id).each do |tweet|
+    while_count = 1
+    while is_retry && while_count <= 50 do
+      while_count += 1
+      timeline = user_timeline(tweet_id)
+      break if timeline.count == 0
+      timeline.each do |tweet|
         tweet_id = tweet.id
         next if tweet.retweet?
         next unless tweet.created_at < end_date

@@ -184,6 +184,7 @@ DEPENDENCIES
   rails_12factor
   sass-rails (~> 4.0.0)
   sdoc
+  simplecov
   sqlite3
   turbolinks
   twitter
