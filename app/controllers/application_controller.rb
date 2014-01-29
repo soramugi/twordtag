@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :login?, :myid, :myname, :myimage
 
+  def not_found
+    render status: 404, template: 'errors/not_found.html.erb'
+  end
+
   private
     def current_user
       @current_user ||= User.find(session[:user_id]) if session[:user_id]
