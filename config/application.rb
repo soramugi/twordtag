@@ -5,6 +5,7 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
+ENV.update YAML.load_file('config/settings.yml')[Rails.env] rescue {}
 I18n.enforce_available_locales = false
 
 module Twordtag

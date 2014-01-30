@@ -19,8 +19,15 @@ http://twordtag.herokuapp.com
     ./bin/rails s
 
 Twitterのユーザー認証にはトークンの指定が必要です。
+開発に必要なトークンは取得する必要があります。
 
     TWITTER_CONSUMER_KEY=YOUR_TWITTER_CONSUMER_KEY TWITTER_CONSUMER_SECRET=YOUR_TWITTER_CONSUMER_SECRET ./bin/rails s
+
+settings.ymlを編集してENVの指定も出来ます
+
+    cp config/settings.example.yml config/settings.yml
+    vi config/settings.yml
+    ./bin/rails s
 
 == herokuセットアップ
 
@@ -63,10 +70,9 @@ http://sourceforge.jp/projects/naist-jdic/releases/
 mecab-naist-jdic
 をダウンロード
 
-    cd ~/Downloads
     tar zxvf mecab-naist-jdic-0.6.3b-20111013.tar.gz
     cd mecab-naist-jdic-0.6.3b-20111013/
-    cp ~/twordtag/dict/add_okura_dic.csv .
-    cd ~/twordtag
-    bundle exec okura compile ~/Downloads/mecab-naist-jdic-0.6.3b-20111013/ dict/okura-dic/
+    cp $RAILS_ROOT/twordtag/dict/add_okura_dic.csv .
+    cd $RAILS_ROOT/twordtag
+    bundle exec okura compile $DOWNLOAD_ROOT/mecab-naist-jdic-0.6.3b-20111013/ dict/okura-dic/
 
