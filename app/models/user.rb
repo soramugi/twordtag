@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many  :tags
+  has_many  :tag_logs
   validates :provider, presence: :true
   validates :uid, presence: :true
   validates :name, presence: :true

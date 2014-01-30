@@ -1,5 +1,7 @@
 class Tag < ActiveRecord::Base
   belongs_to :user
+  # TODO tag_logとのbelongs_toの指定方法しらべる
+  #belongs_to :tag_log, foreign_key: 'user_id'
 
   def self.create_with_user_tweet user,date = nil
     nouns = self.nouns(self.tweet_compression(user.tweets date))

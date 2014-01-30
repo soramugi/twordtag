@@ -1,13 +1,19 @@
 <% title @user.name %>
-<%= image_tag @user.image_url %>
-<%= @user.name %>
 
-<div class="well col-xs-12">
-  <% #TODO 日付毎のくくりで表示 %>
-  <% @user.tags.each do |tag| %>
-    <div class="col-xs-2">
-      <%= tag.count %>
-      <%= tag.word %>
+<div class="col-xs-12">
+  <div class="col-xs-2">
+    <%= image_tag @user.image_url %>
+    <%= @user.name %>
+  </div>
+  <% @user.tag_logs.each do |tag_log| %>
+    <%= tag_log.date %>
+    <div class="well col-xs-10">
+      <% tag_log.tags.each do |tag| %>
+        <div class="col-xs-2">
+          <%= tag.count %>
+          <%= tag.word %>
+        </div>
+      <% end %>
     </div>
   <% end %>
 </div>
