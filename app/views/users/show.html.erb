@@ -7,7 +7,7 @@
   </div>
   <div class="col-xs-10">
     <% @user.tag_logs.each do |tag_log| %>
-      <p><%= tag_log.date %></p>
+      <p><%= link_to tag_log.date, tag_log.view_path %></p>
       <div class="well col-xs-12">
         <% tag_log.tags.each do |tag| %>
           <div class="col-xs-2">
