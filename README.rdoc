@@ -76,3 +76,12 @@ mecab-naist-jdic
     cd $RAILS_ROOT/twordtag
     bundle exec okura compile $DOWNLOAD_ROOT/mecab-naist-jdic-0.6.3b-20111013/ dict/okura-dic/
 
+== tagの作成
+
+昨日の１日分のツイートを取得して単語をtagとしてDB登録
+
+    rake tags:create
+
+日付指定
+
+    rake tags:create[2014-01-28]
