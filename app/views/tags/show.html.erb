@@ -2,11 +2,13 @@
 
 <%= render 'form' %>
 <p><%= @word %></p>
-<ul>
+<div class="col-xs-12">
   <% @tags.each do |tag| %>
-    <li><%= tag.word %></li>
-    <li><%= tag.count %></li>
-    <li><%= tag.date %></li>
+    <div class="col-xs-2">
+      <%= tag.count %>
+      <%= tag.word %>
+      <%= tag.date %>
+    </div>
   <% end %>
-</ul>
+</div>
 <%= paginate @tags %>
