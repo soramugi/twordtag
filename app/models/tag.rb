@@ -27,7 +27,9 @@ class Tag < ActiveRecord::Base
   def self.nouns text
     nouns_word = []
     self.analysis(text).each do |node|
-      nouns_word << node.word.surface unless node.word.left.text.scan(/名詞/).blank?
+      next if node.word.left.text.scan(/名詞/).blank?
+      next unless node.word.left.text.scan(/名詞,数/).blank?
+      nouns_word << node.word.surface
     end
     nouns_word
   end
