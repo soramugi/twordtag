@@ -12,7 +12,7 @@
         <% tag_log.tags.each do |tag| %>
           <div class="col-xs-2">
             <%= tag.count %>
-            <%= tag.word %>
+            <%= link_to tag.word, tag_path(tag.word) %>
           </div>
         <% end %>
       </div>
