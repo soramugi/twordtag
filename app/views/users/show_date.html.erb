@@ -1,2 +1,19 @@
-<h1>Users#show_date</h1>
-<p>Find me in app/views/users/show_date.html.erb</p>
+<% title @user.name + ' ' + @tag_log.date.to_s %>
+
+<div class="col-xs-12">
+  <div class="col-xs-2">
+    <p><%= image_tag @user.image_url, {width: 100, class: 'img-thumbnail'} %></p>
+    <p><%= link_to "@#{@user.name}", user_path(@user.name) %></p>
+  </div>
+  <div class="col-xs-10">
+    <p><%= @tag_log.date %></p>
+    <div class="well col-xs-12">
+      <% @tag_log.tags.each do |tag| %>
+        <div class="col-xs-2">
+          <%= tag.count %>
+          <%= link_to tag.word, tag_path(tag.word) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
