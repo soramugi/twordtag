@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   # GET /user/:name
   # TODO sql投げる回数多いのでまとめる
   def show
+    @tag_logs = @user.tag_logs.order('date desc').page(params[:page]).per(5)
   end
 
   # GET /user/:name/:year/:month/:day
