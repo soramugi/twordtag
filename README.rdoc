@@ -78,7 +78,7 @@ mecab-naist-jdic
 
 == tagの作成
 
-昨日の１日分のツイートを取得して単語をtagとしてDB登録
+過去5日分のツイートを取得して単語をtagとしてDB登録
 
     rake tags:create
 
