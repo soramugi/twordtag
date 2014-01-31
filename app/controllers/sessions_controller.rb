@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     end
 
     login(user)
-    redirect_to root_url
+    redirect_to user_path(user.name)
   end
 
   def destroy
