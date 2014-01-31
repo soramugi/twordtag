@@ -14,10 +14,10 @@ class TagsController < ApplicationController
   private
   def set_tags
     if @word = params[:word]
-      @tags = Tag.where(word: @word).order('id desc').page params[:page]
+      @tags = Tag.where(word: @word).order('date desc').page params[:page]
     else
       @word = '@all'
-      @tags = Tag.all.order('id desc').page params[:page]
+      @tags = Tag.all.order('date desc').page params[:page]
     end
   end
 end

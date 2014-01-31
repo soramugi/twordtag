@@ -3,6 +3,10 @@ class Tag < ActiveRecord::Base
   # TODO tag_logとのbelongs_toの指定方法しらべる
   #belongs_to :tag_log, foreign_key: 'user_id'
 
+  def view_path
+    "/user/#{user.name}/#{date.year}/#{date.month}/#{date.day}"
+  end
+
   def self.create_with_user_tweet user,date = nil
     nouns = self.nouns(self.tweet_compression(user.tweets date))
     tags = []

@@ -3,11 +3,18 @@
 <%= render 'form' %>
 <p><%= @word %></p>
 <div class="col-xs-12">
+  <% #TODO 同じユーザーはsql流さないように %>
   <% @tags.each do |tag| %>
     <div class="col-xs-2">
-      <%= tag.count %>
-      <%= tag.word %>
-      <%= tag.date %>
+      <a href="<%= tag.view_path %>">
+        <p>
+          <%= image_tag tag.user.image_url, {width: 50} %>
+          <%= tag.user.name %>
+        </p>
+        <%= tag.count %>
+        <%= tag.word %>
+        <%= tag.date %>
+      </a>
     </div>
   <% end %>
 </div>
