@@ -8,7 +8,7 @@ TWordTagはTwitterでのつぶやきから単語を抜き出して、ユーザ�
 
 開発中。。。。。
 
-http://twordtag.herokuapp.com
+http://www.twordtag.com
 
 == セットアップ
 
