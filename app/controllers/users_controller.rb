@@ -9,7 +9,8 @@ class UsersController < ApplicationController
 
   # GET /user/:name/:year/:month/:day
   def show_date
-    @tag_log = @user.tag_logs.find_by_date(date_param_parse)
+    @date    = date_param_parse
+    @tag_log = @user.tag_logs.find_by_date(@date)
   end
 
   private

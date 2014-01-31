@@ -1,4 +1,4 @@
-<% title @user.name + ' ' + @tag_log.date.to_s %>
+<% title @user.name + ' ' + @date.to_s %>
 
 <div class="col-xs-12">
   <div class="col-xs-2">
@@ -6,13 +6,15 @@
     <p><%= link_to "@#{@user.name}", user_path(@user.name) %></p>
   </div>
   <div class="col-xs-10">
-    <p><%= @tag_log.date %></p>
+    <p><%= @date %></p>
     <div class="well col-xs-12">
-      <% @tag_log.tags.each do |tag| %>
-        <div class="col-xs-2">
-          <%= tag.count %>
-          <%= link_to tag.word, tag_path(tag.word) %>
-        </div>
+      <% if @tag_log %>
+        <% @tag_log.tags.each do |tag| %>
+          <div class="col-xs-2">
+            <%= tag.count %>
+            <%= link_to tag.word, tag_path(tag.word) %>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
