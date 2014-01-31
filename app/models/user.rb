@@ -22,11 +22,17 @@ class User < ActiveRecord::Base
   end
 
   def create_tags date = nil
-      date = date || yesterday
-      return unless provider == 'twitter'
-      return if TagLog.find_by_user_id_and_date(id, date)
-      Tag.create_with_user_tweet self, date
-      TagLog.create(user_id: id, date: date)
+    date = date || yesterday
+    return unless provider == 'twitter'
+    return if TagLog.find_by_user_id_and_date(id, date)
+    tags = nil
+    ActiveRecord::Base.transaction do
+      TagLog.create!(user_id: id, date: date)
+      tags = Tag.create_with_user_tweet self, date
+    end
+    return tags
+  rescue => e
+    return nil
   end
 
   def client
@@ -74,7 +80,7 @@ class User < ActiveRecord::Base
     client.user_timeline(uid.to_i, tweet_options(tweet_id))
   end
   def tweet_options tweet_id
-    options = {count: 50}
+    options = {count: 500}
     options[:max_id] = tweet_id - 1 if tweet_id
     options
   end
