@@ -13,13 +13,7 @@
       <div class="container">
         <%- if params[:controller] == 'tops' && params[:action] == 'index' %>
           <div id="header">
-            <% if login? %>
-              <%= render 'tops/menu' %>
-            <% else %>
-              <ul class="nav nav-pills pull-right ">
-                <li><%= link_to 'Sign in with Twitter', '/auth/twitter' %></li>
-              </ul>
-            <% end %>
+            <%= render 'tops/menu' %>
           </div>
         <% else %>
           <div class="page-header">
