@@ -8,27 +8,29 @@ namespace :tags do
       Time.now.to_date - 4,
       Time.now.to_date - 5,
     ]
-    limit = args.limit ? args.limit.to_i : 1
+    limit = args.limit ? args.limit.to_i : 6
 
     # TODO tags作成されてないユーザーを積極的に取得できるように
-    # 1度のタスク実行で1ユーザーのtagしか作れないように
-    user_count = 0
+    # 1度のタスク実行で6日分(ユーザー関係なく)のtagしか作れないように
+    tags_create_count = 0
     User.all.find_in_batches do |users|
       users.each do |user|
         is_create_tag = false
         dates.each do | date|
-          is_create_tag = true unless user.create_tags(date) == nil
+          unless user.create_tags(date) == nil
+            is_create_tag = true
+            tags_create_count += 1
+          end
         end
         if is_create_tag
           # tag作成完了をツイートさせる
-          user_count += 1
           tweet = dates.first.strftime('%Y/%m/%d のツイートからタグを抽出しました。 #twordtag')
           tweet += " http://www.twordtag.com/user/#{user.name}"
           user.client.update(tweet)
         end
-        break if user_count >= limit
+        break if tags_create_count >= limit
       end
-      break if user_count >= limit
+      break if tags_create_count >= limit
     end
   end
 end
