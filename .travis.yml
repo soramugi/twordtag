@@ -9,6 +9,7 @@ env:
   - GIT_AUTHOR_EMAIL: travis@example.com
   - secure: e7Mc/solwZfBeV8QaDul09XU23Xu3vbursAx0zDNdAZ80FeC/jRBrJf72kXTKK66BV/UXPIyJ0sYiaLVJCfP47dxbjpu9kytTn1yOU5RNzm6zMS2m5fZZ8RraR0TTMfuLvHfwWcHoiIy9giDXejeC4u6BrnqNobOPR1yvl1jv0w=
 script:
+- cp config/database.example.yml config/database.yml
 - bundle exec rake db:migrate
 - bundle exec rake test
 after_success:
