@@ -20,3 +20,4 @@
 #/config/okura-dic
 /coverage
 /config/settings.yml
+/config/database.yml

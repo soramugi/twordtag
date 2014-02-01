@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
     end
     return tags
   rescue => e
+    p e
     return nil
   end
 
