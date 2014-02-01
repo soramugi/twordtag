@@ -19,7 +19,13 @@ namespace :tags do
         dates.each do | date|
           is_create_tag = true unless user.create_tags(date) == nil
         end
-        user_count += 1 if is_create_tag
+        if is_create_tag
+          # tag作成完了をツイートさせる
+          user_count += 1
+          tweet = dates.first.strftime('%Y/%m/%d のツイートからタグを抽出しました。 #twordtag')
+          tweet += " http://www.twordtag.com/user/#{user.name}"
+          user.client.update(tweet)
+        end
         break if user_count >= limit
       end
       break if user_count >= limit
