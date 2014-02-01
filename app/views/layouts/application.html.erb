@@ -11,10 +11,22 @@
     <div id="wrap">
 
       <div class="container">
-        <div class="page-header" id="banner">
-          <%= render 'tops/menu' %>
-          <h1>TWordTag</h1>
-        </div>
+        <%- if params[:controller] == 'tops' && params[:action] == 'index' %>
+          <div id="header">
+            <% if login? %>
+              <%= render 'tops/menu' %>
+            <% else %>
+              <ul class="nav nav-pills pull-right ">
+                <li><%= link_to 'Sign in with Twitter', '/auth/twitter' %></li>
+              </ul>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="page-header">
+            <%= render 'tops/menu' %>
+            <h1>TWordTag</h1>
+          </div>
+        <% end %>
 
         <%= yield %>
       </div>
