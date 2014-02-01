@@ -1,7 +1,7 @@
-<% title "「#{@word}」の検索結果" %>
+<% title "「#{@word}」タグの検索結果" %>
 
 <%= render 'form' %>
-<p><%= @word %></p>
+<p>「<%= @word %>」タグの検索結果</p>
 <div class="col-xs-12">
   <% #TODO 同じユーザーはsql流さないように %>
   <% @tags.each do |tag| %>
