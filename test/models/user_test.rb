@@ -48,7 +48,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal [], user.tweets
 
     user.stubs(:user_timeline).returns([
-        Hashie::Mash.new({id: 2, retweet?: false, created_at: Time.now.to_datetime - 1})
+        Hashie::Mash.new({id: 2, retweet?: false, created_at: Time.now.to_date - 1})
     ])
     assert_equal 50, user.tweets.count
   end
