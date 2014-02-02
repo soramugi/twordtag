@@ -79,6 +79,7 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.8.4)
     multipart-post (2.0.0)
+    newrelic_rpm (3.7.1.188)
     oauth (0.4.7)
     okura (0.0.1)
     omniauth (1.2.1)
@@ -185,6 +186,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   mocha
+  newrelic_rpm
   okura
   omniauth
   omniauth-twitter
