@@ -13,6 +13,7 @@ Twordtag::Application.routes.draw do
 
   get 'user/:name' => 'users#show', as: 'user'
   get 'user/:name/:year/:month/:day' => 'users#show_date'
+  match 'user/:name' => 'users#update', via: [:put], as: 'update_user'
 
   match '*a' => 'application#not_found', via: [:get, :post, :put, :delete]
 end

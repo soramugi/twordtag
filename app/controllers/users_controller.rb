@@ -13,11 +13,20 @@ class UsersController < ApplicationController
     @tag_log = @user.tag_logs.find_by_date(@date)
   end
 
+  # PATCH/PUT /users/:name
+  def update
+    @user.update(user_params) if myid == @user.id
+    redirect_to user_path(@user.name)
+  end
+
   private
   def date_param_parse
     Time.parse("#{params[:year]}/#{params[:month]}/#{params[:day]}").to_date
   end
   def set_user
     @user = User.find_by_name(params[:name])
+  end
+  def user_params
+    params.require(:user).permit(:tweet_status)
   end
 end

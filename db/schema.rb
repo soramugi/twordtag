@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140128022729) do
+ActiveRecord::Schema.define(version: 20140202151324) do
 
   create_table "tag_logs", force: true do |t|
     t.integer  "user_id"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20140128022729) do
     t.datetime "updated_at"
     t.string   "token"
     t.string   "secret"
+    t.integer  "tweet_status", default: 0
   end
 
 end

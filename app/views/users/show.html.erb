@@ -2,10 +2,24 @@
 
 <div class="col-xs-12">
   <div class="col-xs-2">
-    <a href="<%= "https://twitter.com/#{@user.name}" %>">
-      <%= image_tag @user.image_url, {width: 100, class: 'img-thumbnail'} %>
-      <%= "@#{@user.name}" %>
-    </a>
+    <div>
+      <a href="<%= "https://twitter.com/#{@user.name}" %>">
+        <%= image_tag @user.image_url, {width: 100, class: 'img-thumbnail'} %>
+        <%= "@#{@user.name}" %>
+      </a>
+    </div>
+    <%- if myid == @user.id %>
+      <div>
+        <%= form_for @user, url: update_user_path(@user.name), method: 'put' do |f| %>
+          <%= f.hidden_field :tweet_status, {value: @user.tweet_status == 0 ? 1 : 0} %>
+          <%- if @user.tweet? %>
+            <%= f.submit '集計完了後のツイートを解除', { class: 'btn btn-success'} %>
+          <% else %>
+            <%= f.submit '集計完了後にツイート', { class: 'btn btn-info'} %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
   <div class="col-xs-10">
     <% @tag_logs.each do |tag_log| %>

@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def tweet?
+    tweet_status == 1
+  end
+
   def create_tags date = nil
     date = date || yesterday
     return unless provider == 'twitter'
