@@ -6,8 +6,6 @@
 
 TWordTagはTwitterでのつぶやきから単語を抜き出して、ユーザー同士を紐づけるwebアプリケーションです。
 
-開発中。。。。。
-
 http://www.twordtag.com
 
 == セットアップ
@@ -78,7 +76,7 @@ mecab-naist-jdic
 
 == tagの作成
 
-過去5日分のツイートを取得して単語をtagとしてDB登録
+過去ツイートを取得して6日分(ユーザー関係なく(1ユーザー過去5日分のtagを作成))の単語をtagとしてDB登録
 
     rake tags:create
 
