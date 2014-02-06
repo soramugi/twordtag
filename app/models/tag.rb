@@ -45,10 +45,14 @@ class Tag < ActiveRecord::Base
   # 返り値
   #   ["果実", "梅", "果実"]
   def self.generate text
-    nouns_word = []
+    nouns_word         = []
+    ignore_not_include = '名詞'
+    ignore_include     = '名詞,数'
+    ignore_word        = 'http'
     self.analysis(text).each do |node|
-      next if node.word.left.text.scan(/名詞/).blank?
-      next unless node.word.left.text.scan(/名詞,数/).blank?
+      next if node.word.left.text.scan(/#{ignore_not_include}/).blank?
+      next unless node.word.left.text.scan(/#{ignore_include}/).blank?
+      next unless node.word.surface.scan(/#{ignore_word}/).blank?
       nouns_word << node.word.surface
     end
     nouns_word

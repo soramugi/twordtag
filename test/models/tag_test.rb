@@ -13,7 +13,7 @@ class TagTest < ActiveSupport::TestCase
     assert_equal example, nouns
   end
   test "the generate" do
-    nouns = Tag.generate '果実と梅と果実'
+    nouns = Tag.generate 'httpと果実と梅と果実'
     assert_equal ["果実", "梅", "果実"], nouns
   end
 end
