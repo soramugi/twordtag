@@ -52,7 +52,7 @@ class Tag < ActiveRecord::Base
     self.analysis(text).each do |node|
       next if node.word.left.text.scan(/#{ignore_not_include}/).blank?
       next unless node.word.left.text.scan(/#{ignore_include}/).blank?
-      next unless node.word.surface.scan(/#{ignore_word}/).blank?
+      next unless node.word.surface.scan(/#{ignore_word}|^[ぁ-ん]$/).blank?
       nouns_word << node.word.surface
     end
     nouns_word
