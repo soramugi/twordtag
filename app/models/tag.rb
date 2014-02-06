@@ -8,12 +8,9 @@ class Tag < ActiveRecord::Base
   end
 
   def self.create_with_user_tweet user,date = nil
-    nouns = self.nouns(self.tweet_compression(user.tweets date))
     tags = []
-    counter_nouns = nouns.inject(Hash.new(0)){|hash, a| hash[a] += 1; hash}
-    counter_nouns = counter_nouns.sort {|(a,av),(b,bv)| bv <=> av}
-    counter_nouns.shift(20).each do |word,count|
-      next if count == 1
+    words = self.generate(self.tweet_compression(user.tweets date))
+    self.counter(words).shift(20).each do |word,count|
       tags << create! do |record|
         record.user_id = user.id
         record.word    = word
@@ -24,13 +21,30 @@ class Tag < ActiveRecord::Base
     tags
   end
 
+  # 単語の回数計算
+  #
+  # 引数
+  #   ['huge','foge','huge']
+  #
+  # 返り値
+  #   [ ['huge', 2], ['foge', 1] ]
+  def self.counter words
+    words.inject(Hash.new(0)){|hash, a| hash[a] += 1; hash}.sort {|(a,av),(b,bv)| bv <=> av}
+  end
+
   # 形態素解析
   def self.analysis text
     self.tagger.parse(text).mincost_path
   end
 
-  # 名詞のみ
-  def self.nouns text
+  # 単語選り分けて抜き出し
+  #
+  # 引数
+  #   '果実と梅と果実'
+  #
+  # 返り値
+  #   ["果実", "梅", "果実"]
+  def self.generate text
     nouns_word = []
     self.analysis(text).each do |node|
       next if node.word.left.text.scan(/名詞/).blank?

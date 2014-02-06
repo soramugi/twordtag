@@ -1,4 +1,4 @@
-json.array!(@nodes.mincost_path) do |node|
-  json.extract! node.word, :surface
-  json.extract! node.word.left, :text
+json.array!(@words) do |j,(word,count)|
+  j.word word
+  j.count count
 end

@@ -12,8 +12,8 @@ class TagTest < ActiveSupport::TestCase
     example = Tag.where(word: ['果実', '梅'])
     assert_equal example, nouns
   end
-  test "the nouns" do
-    nouns = Tag.nouns '果実と梅と果実'
+  test "the generate" do
+    nouns = Tag.generate '果実と梅と果実'
     assert_equal ["果実", "梅", "果実"], nouns
   end
 end

@@ -7,7 +7,7 @@ $document.on 'click', '#analysis-btn', (e) ->
     (data) ->
       html = '<ul class="unstyled">'
       for value in data
-        html += '<li>' + value.surface + ' , ' + value.text + '</li>'
+        html += '<li>' + value.count + ' ' + value.word + '</li>'
       html += '</ul>'
       $("#preview").html(html)
   return false

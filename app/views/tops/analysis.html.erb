@@ -19,8 +19,8 @@
   <div class="col-xs-6">
     <div id="preview" class="well">
       <ul class="unstyled">
-        <% @nodes.mincost_path.each do |node| %>
-          <li><%= node.word.surface + ' , ' + node.word.left.text%></li>
+        <% @words.each do |word,count| %>
+          <li><%= count.to_s + ' ' + word %></li>
         <% end %>
       </ul>
     </div>
