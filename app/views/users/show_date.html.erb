@@ -11,11 +11,15 @@
     <p><%= @date %></p>
     <div class="well col-xs-12">
       <% if @tag_log %>
-        <% @tag_log.tags.each do |tag| %>
-          <div class="col-xs-2">
-            <%= tag.count %>
-            <%= link_to tag.word, tag_path(tag.word) %>
-          </div>
+        <% if @tag_log.tags.count > 0 %>
+          <% @tag_log.tags.each do |tag| %>
+            <div class="col-xs-2">
+              <%= tag.count %>
+              <%= link_to tag.word, tag_path(tag.word) %>
+            </div>
+          <% end %>
+        <% else %>
+          <p>抽出できるtagがありませんでした</p>
         <% end %>
       <% end %>
     </div>

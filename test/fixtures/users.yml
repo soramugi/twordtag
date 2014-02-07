@@ -3,7 +3,7 @@
 one:
   provider: MyString
   uid: MyString
-  name: MyString
+  name: one_name
   image_url: MyString
   token: MyString
   secret: MyString
@@ -11,7 +11,7 @@ one:
 two:
   provider: MyString
   uid: MyString
-  name: MyString
+  name: two_name
   image_url: MyString
   token: MyString
   secret: MyString
