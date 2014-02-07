@@ -23,11 +23,13 @@ class Tag < ActiveRecord::Base
 
   # 単語の回数計算
   #
-  # 引数
-  #   ['huge','foge','huge']
+  # ==== Parameters
   #
-  # 返り値
-  #   [ ['huge', 2], ['foge', 1] ]
+  # * +words+ - ['huge','foge','huge']
+  # ==== Returns
+  #
+  # * [ ['huge', 2], ['foge', 1] ]
+  #
   def self.counter words
     words.inject(Hash.new(0)){|hash, a| hash[a] += 1; hash}.sort {|(a,av),(b,bv)| bv <=> av}
   end
