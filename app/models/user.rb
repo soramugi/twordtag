@@ -44,6 +44,18 @@ class User < ActiveRecord::Base
     return e
   end
 
+  # Twitter APIから情報を上書き
+  def update_with_twitter_status
+    return unless provider == 'twitter'
+    _image_url = client.user.profile_image_url.to_s
+    _name      = client.user.screen_name
+    if _image_url != image_url || _name != name
+      update_attributes! image_url: _image_url, name: _name
+    end
+  rescue => e
+    return e
+  end
+
   def client
     @client ||= Twitter::REST::Client.new do |config|
       config.consumer_key        = Twordtag::Application.config.twitter_consumer_key

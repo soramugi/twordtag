@@ -22,6 +22,7 @@ namespace :tags do
             tags_create_count += 1
           end
         end
+        user.update_with_twitter_status
         if is_create_tag && user.tweet?
           # tag作成完了をツイートさせる
           tweet = dates.first.strftime('%Y/%m/%d のツイートからタグを抽出しました。 #twordtag')
