@@ -25,6 +25,11 @@ class User < ActiveRecord::Base
     tweet_status == 1
   end
 
+  # tagの作成
+  #
+  # ==== Returns
+  #
+  # * [ Tag, Tag ] | error_obj
   def create_tags date = nil
     date = date || yesterday
     return unless provider == 'twitter'
@@ -36,8 +41,7 @@ class User < ActiveRecord::Base
     end
     return tags
   rescue => e
-    p e
-    return nil
+    return e
   end
 
   def client
