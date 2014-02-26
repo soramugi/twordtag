@@ -4,7 +4,15 @@
     <h1><%= Twordtag::Application.config.title %></h1>
     <p>Twitterの1日をタグに変換</p>
     <div style="height: 250px;"></div>
-    <p class="center"><%= link_to 'Sign in with Twitter', '/auth/twitter', {class: 'btn btn-primary'} %></p>
+    <p class="center">
+      <a href="/auth/twitter" >
+        <button type="button" class="btn btn-info">
+          <i class="fa fa-3 fa-twitter"></i> Sign in with Twitter
+        </button>
+      </a>
+    </p>
+
+
   </div>
   <div class="col-lg-1"></div>
 </div>
