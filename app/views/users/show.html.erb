@@ -10,13 +10,19 @@
     </div>
     <%- if myid == @user.id %>
       <div>
+
+        <p>集計完了時ツイート</p>
         <%= form_for @user, url: update_user_path(@user.name), method: 'put' do |f| %>
           <%= f.hidden_field :tweet_status, {value: @user.tweet_status == 0 ? 1 : 0} %>
+          <div class="btn-group">
           <%- if @user.tweet? %>
-            <%= f.submit '集計完了後のツイートを解除', { class: 'btn btn-success'} %>
+            <button type="button" class="btn btn-default active btn-success">ON</button>
+            <button type="submit" class="btn btn-default">OFF</button>
           <% else %>
-            <%= f.submit '集計完了後にツイート', { class: 'btn btn-info'} %>
+            <button type="submit" class="btn btn-default">ON</button>
+            <button type="button" class="btn btn-default active btn-success">OFF</button>
           <% end %>
+          </div>
         <% end %>
       </div>
     <% end %>
