@@ -11,6 +11,16 @@ class TagsController < ApplicationController
   def show
   end
 
+  # POST /tags/create
+  def create
+    user = User.find_by_name(params[:name])
+    date = Time.now.to_date
+    1.upto 10 do |t|
+      break if user.create_tags(date - t).is_a? Array
+    end
+    redirect_to user_path(user.name)
+  end
+
   private
   def set_tags
     if @word = params[:word]
