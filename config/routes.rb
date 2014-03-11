@@ -10,6 +10,7 @@ Twordtag::Application.routes.draw do
 
   get '/tags' => 'tags#index'
   get '/tags/:word' => 'tags#show', as: 'tag'
+  post '/tags/create/:name' => 'tags#create'
 
   get 'user/:name' => 'users#show', as: 'user'
   get 'user/:name/search/:word' => 'users#search', as: 'search_tag_user'

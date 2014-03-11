@@ -55,7 +55,7 @@ class UserTest < ActiveSupport::TestCase
 
   test "create_tags" do
     user = users(:one)
-    assert_nil user.create_tags
+    assert user.create_tags.is_a? RuntimeError
   end
 
   test "tag_logs_search_by_tag_word" do
