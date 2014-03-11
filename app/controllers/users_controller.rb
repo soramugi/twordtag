@@ -4,7 +4,15 @@ class UsersController < ApplicationController
   # GET /user/:name
   # TODO sql投げる回数多いのでまとめる
   def show
-    @tag_logs = @user.tag_logs.order('date desc').page(params[:page]).per(5)
+    tags = @user.tags.order('date desc').limit(200)
+    @tags = tags.inject(Hash.new(0)) { |hash, a|
+      hash[a.word] += a.count; hash
+    }.sort {|(a,av),(b,bv)| bv <=> av}
+  end
+
+  def search
+    @word = params[:word]
+    @tag_logs = @user.tag_logs_search_by_tag_word(@word).page(params[:page]).per(5)
   end
 
   # GET /user/:name/:year/:month/:day

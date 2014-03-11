@@ -44,6 +44,11 @@ class User < ActiveRecord::Base
     return e
   end
 
+  def tag_logs_search_by_tag_word word
+    tags = Tag.where(user_id: self.id, word: word)
+    TagLog.where(user_id: self.id, date: tags.map {|t| t.date }).order('date desc')
+  end
+
   # Twitter APIから情報を上書き
   def update_with_twitter_status
     return unless provider == 'twitter'

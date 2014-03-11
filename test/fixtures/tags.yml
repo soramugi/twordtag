@@ -2,12 +2,25 @@
 
 one:
   user: one
-  word: MyString
+  word: 果汁
   count: 1
-  date: 2014-01-26
+  date: 2014-01-28
 
 two:
   user: two
   word: MyString
   count: 1
   date: 2014-01-26
+
+three:
+  user: one
+  word: 果汁
+  count: 3
+  date: 2014-01-29
+
+four:
+  user: one
+  word: くだもの
+  count: 2
+  date: 2014-01-29
+

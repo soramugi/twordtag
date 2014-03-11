@@ -1,0 +1,39 @@
+<% title @user.name %>
+
+<div class="col-xs-12">
+  <div class="col-xs-2">
+    <a href="<%= user_path(@user.name) %>">
+      <%= image_tag @user.image_url, {width: 100, class: 'img-thumbnail'} %>
+      <%= "@#{@user.name}" %>
+    </a>
+    <p>「<%= @word %>」の検索結果</p>
+    <%= link_to "全体の「#{@word}」の検索結果の表示", tag_path(@word) %>
+  </div>
+  <div class="col-xs-10">
+    <% @tag_logs.each do |tag_log| %>
+      <p><%= link_to tag_log.date, tag_log.view_path %></p>
+      <div class="well col-xs-12">
+        <% if tag_log.tags.count > 0 %>
+          <% tag_log.tags.each do |tag| %>
+            <div class="col-xs-2">
+              <%- if tag.word == @word %>
+                <p class="text-danger">
+                  <%= tag.count %>
+                  <%= @word %>
+                </p>
+              <% else %>
+                <%= tag.count %>
+                <%= link_to tag.word, search_tag_user_path(@user.name, tag.word) %>
+              <% end %>
+            </div>
+          <% end %>
+        <% else %>
+          <p>抽出できるtagがありませんでした</p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-xs-12">
+    <%= paginate @tag_logs %>
+  </div>
+</div>
