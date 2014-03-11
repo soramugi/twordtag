@@ -32,9 +32,9 @@ class User < ActiveRecord::Base
   # * [ Tag, Tag ] | error_obj
   def create_tags date = nil
     date = date || yesterday
-    return unless provider == 'twitter'
-    return if TagLog.find_by_user_id_and_date(id, date)
-    tags = nil
+    raise 'Not provider twitter' unless provider == 'twitter'
+    raise 'Created done' if TagLog.find_by_user_id_and_date(id, date)
+    tags = []
     ActiveRecord::Base.transaction do
       TagLog.create!(user_id: id, date: date)
       tags = Tag.create_with_user_tweet self, date
