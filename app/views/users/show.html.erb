@@ -26,6 +26,9 @@
         <% end %>
       </div>
     <% end %>
+    <p>
+      <%= button_to 'tagの更新', { controller: 'tags', action: 'create', name: @user.name}, {class: 'btn btn-default'} %>
+    </p>
   </div>
   <div class="col-xs-10">
     <% @tag_logs.each do |tag_log| %>
