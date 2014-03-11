@@ -15,36 +15,21 @@
         <%= form_for @user, url: update_user_path(@user.name), method: 'put' do |f| %>
           <%= f.hidden_field :tweet_status, {value: @user.tweet_status == 0 ? 1 : 0} %>
           <div class="btn-group">
-          <%- if @user.tweet? %>
-            <button type="button" class="btn btn-default active btn-success">ON</button>
-            <button type="submit" class="btn btn-default">OFF</button>
-          <% else %>
-            <button type="submit" class="btn btn-default">ON</button>
-            <button type="button" class="btn btn-default active btn-success">OFF</button>
-          <% end %>
+            <%- if @user.tweet? %>
+              <button type="button" class="btn btn-default active btn-success">ON</button>
+              <button type="submit" class="btn btn-default">OFF</button>
+            <% else %>
+              <button type="submit" class="btn btn-default">ON</button>
+              <button type="button" class="btn btn-default active btn-success">OFF</button>
+            <% end %>
           </div>
         <% end %>
       </div>
     <% end %>
   </div>
   <div class="col-xs-10">
-    <% @tag_logs.each do |tag_log| %>
-      <p><%= link_to tag_log.date, tag_log.view_path %></p>
-      <div class="well col-xs-12">
-        <% if tag_log.tags.count > 0 %>
-          <% tag_log.tags.each do |tag| %>
-            <div class="col-xs-2">
-              <%= tag.count %>
-              <%= link_to tag.word, search_tag_user_path(@user.name, tag.word) %>
-            </div>
-          <% end %>
-        <% else %>
-          <p>抽出できるtagがありませんでした</p>
-        <% end %>
-      </div>
+    <% @tags.shuffle.each do |(word,count)| %>
+        <%= link_to word, search_tag_user_path(@user.name, word), class: "tag-cloud#{count > 10 ? 10 : count}" %>
     <% end %>
-  </div>
-  <div class="col-xs-12">
-    <%= paginate @tag_logs %>
   </div>
 </div>

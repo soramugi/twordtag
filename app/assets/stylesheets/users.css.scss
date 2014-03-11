@@ -1,3 +1,10 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@for $i from 0 through 9 {
+  .tag-cloud#{$i + 1} {
+    font-size: #{2.0 + 0.4 * $i}em;
+    margin: 0px 30px;
+  }
+}
