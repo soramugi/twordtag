@@ -35,7 +35,7 @@
           <% tag_log.tags.each do |tag| %>
             <div class="col-xs-2">
               <%= tag.count %>
-              <%= link_to tag.word, tag_path(tag.word) %>
+              <%= link_to tag.word, search_tag_user_path(@user.name, tag.word) %>
             </div>
           <% end %>
         <% else %>

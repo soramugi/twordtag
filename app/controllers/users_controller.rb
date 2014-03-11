@@ -7,6 +7,11 @@ class UsersController < ApplicationController
     @tag_logs = @user.tag_logs.order('date desc').page(params[:page]).per(5)
   end
 
+  def search
+    @word = params[:word]
+    @tag_logs = @user.tag_logs_search_by_tag_word(@word).page(params[:page]).per(5)
+  end
+
   # GET /user/:name/:year/:month/:day
   def show_date
     @date    = date_param_parse

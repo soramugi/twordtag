@@ -57,4 +57,13 @@ class UserTest < ActiveSupport::TestCase
     user = users(:one)
     assert_nil user.create_tags
   end
+
+  test "tag_logs_search_by_tag_word" do
+    user = users(:one)
+    tag_logs = user.tag_logs_search_by_tag_word('果汁')
+    tags = Tag.where(user_id: user.id, word: '果汁')
+    assert tag_logs
+    assert_equal tag_logs.count, tags.count
+  end
+
 end
