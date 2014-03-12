@@ -17,7 +17,7 @@ namespace :tags do
       users.each do |user|
         is_create_tag = false
         dates.each do | date|
-          unless user.create_tags(date) == nil
+          unless user.create_tags(date).is_a? RuntimeError
             is_create_tag = true
             tags_create_count += 1
           end
