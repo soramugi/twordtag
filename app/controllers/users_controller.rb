@@ -2,9 +2,9 @@ class UsersController < ApplicationController
   before_action :set_user
 
   # GET /user/:name
-  # TODO sql投げる回数多いのでまとめる
+  # GET /user/:name.json
   def show
-    tags = @user.tags.order('date desc').limit(200)
+    tags = @user.tags.order('date desc').limit(100)
     @tags = tags.inject(Hash.new(0)) { |hash, a|
       hash[a.word] += a.count; hash
     }.sort {|(a,av),(b,bv)| bv <=> av}
