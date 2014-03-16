@@ -4,6 +4,10 @@ class SessionsController < ApplicationController
     if !(user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]))
       user = User.create_with_omniauth(auth)
       user.create_tags
+    else
+      user.token     = auth["credentials"]["token"]
+      user.secret    = auth["credentials"]["secret"]
+      user.save
     end
 
     login(user)
