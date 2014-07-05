@@ -23,6 +23,7 @@ namespace :tags do
           end
         end
         user.update_with_twitter_status
+        user.tags.where('date < ?', Date.today - 1.month).each(&:destroy)
         if is_create_tag && user.tweet?
           # tag作成完了をツイートさせる
           tweet = dates.first.strftime('%Y/%m/%d のツイートからタグを抽出しました。 #twordtag')
